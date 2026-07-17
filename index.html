@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0878e8">
+  <meta name="description" content="Fruit Rain Kids is a cheerful fruit-catching game for toddlers and young children. Catch fruits, practise counting and play offline.">
+  <meta property="og:title" content="Fruit Rain Kids — Catch, Count, Learn, Smile">
+  <meta property="og:description" content="A joyful fruit-catching game made for little learners.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chiradeepbanerjee1990.github.io/">
+  <meta property="og:image" content="https://chiradeepbanerjee1990.github.io/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/app-icon.webp">
+  <title>Fruit Rain Kids | A joyful learning game for little ones</title>
+  <style>
+    :root {
+      --blue-900: #0754a4;
+      --blue-700: #0878e8;
+      --blue-500: #23a8f7;
+      --sky: #eaf8ff;
+      --ink: #17324d;
+      --muted: #5c7083;
+      --green: #55b934;
+      --green-dark: #338e20;
+      --yellow: #ffd44d;
+      --coral: #ff6557;
+      --purple: #8e52dc;
+      --white: #fff;
+      --shadow: 0 18px 50px rgba(13, 83, 143, .14);
+      --radius-lg: 32px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      color: var(--blue-700);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 4px; border-radius: 99px; background: var(--yellow); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.08; letter-spacing: -.035em; }
+    h2 { margin-bottom: 18px; font-size: clamp(2rem, 4vw, 3.35rem); }
+    .lead { color: var(--muted); font-family: system-ui, sans-serif; font-size: 1.08rem; }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 8% 18%, rgba(255,255,255,.32) 0 4px, transparent 5px),
+        radial-gradient(circle at 70% 12%, rgba(255,255,255,.28) 0 3px, transparent 4px),
+        linear-gradient(145deg, #086bd6 0%, #10a6f0 58%, #78d8ff 100%);
+      isolation: isolate;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: -5%; right: -5%; bottom: -74px;
+      height: 150px;
+      background: #fff;
+      border-radius: 50% 50% 0 0 / 46% 46% 0 0;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 24px 0;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: #fff; font-size: 1.08rem; font-weight: 900; text-decoration: none; }
+    .brand img { width: 52px; height: 52px; border: 3px solid rgba(255,255,255,.9); border-radius: 16px; box-shadow: 0 8px 20px rgba(2,54,105,.25); }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: .92rem; font-weight: 800; }
+    .nav-links a { color: rgba(255,255,255,.9); text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+    .nav-download { padding: 10px 18px; border: 1px solid rgba(255,255,255,.42); border-radius: 999px; background: rgba(255,255,255,.14); }
+
+    .hero-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 48px; padding: 44px 0 120px; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero .eyebrow { color: #fff; }
+    .hero h1 { max-width: 650px; margin-bottom: 22px; font-size: clamp(3.35rem, 7vw, 6.3rem); text-shadow: 0 5px 0 rgba(2,75,151,.2); }
+    .hero h1 span { color: var(--yellow); }
+    .hero-copy > p:not(.eyebrow) { max-width: 590px; margin-bottom: 30px; color: rgba(255,255,255,.92); font-family: system-ui, sans-serif; font-size: 1.17rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+    .play-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      min-height: 66px;
+      padding: 10px 24px 10px 18px;
+      border: 2px solid rgba(255,255,255,.25);
+      border-radius: 18px;
+      color: #fff;
+      background: #101820;
+      box-shadow: 0 12px 28px rgba(2,44,85,.3);
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .play-button:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(2,44,85,.34); }
+    .play-mark { display: grid; place-items: center; width: 34px; height: 38px; color: #57cb48; font-size: 2rem; line-height: 1; }
+    .play-copy { display: grid; line-height: 1.05; }
+    .play-copy small { font-family: system-ui, sans-serif; font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
+    .play-copy strong { font-size: 1.22rem; }
+    .safe-note { display: inline-flex; align-items: center; gap: 9px; font-family: system-ui, sans-serif; font-size: .9rem; font-weight: 700; }
+    .safe-dot { width: 11px; height: 11px; border: 3px solid rgba(255,255,255,.56); border-radius: 50%; background: var(--yellow); }
+
+    .hero-art { position: relative; min-height: 545px; }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 8% -10% 2% 6%;
+      border: 2px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      box-shadow: inset 0 0 60px rgba(255,255,255,.1);
+    }
+    .app-icon { position: absolute; z-index: 2; width: min(410px, 72%); right: 5%; top: 1%; border: 8px solid rgba(255,255,255,.9); border-radius: 27%; box-shadow: 0 28px 70px rgba(2,69,128,.35); transform: rotate(3deg); }
+    .phone-shot { position: absolute; z-index: 3; width: 225px; left: 1%; bottom: -12px; border: 8px solid #fff; border-radius: 34px; box-shadow: 0 24px 60px rgba(2,69,128,.38); transform: rotate(-5deg); }
+    .float-tag { position: absolute; z-index: 4; right: -1%; bottom: 35px; padding: 13px 17px; border-radius: 18px; color: var(--ink); background: #fff; box-shadow: var(--shadow); font-size: .9rem; font-weight: 900; transform: rotate(3deg); }
+    .float-tag b { color: var(--green-dark); }
+
+    .trust-strip { position: relative; z-index: 3; margin-top: -12px; }
+    .trust-card { display: grid; grid-template-columns: repeat(3, 1fr); overflow: hidden; border: 1px solid #dfeef6; border-radius: 24px; background: #fff; box-shadow: var(--shadow); }
+    .trust-item { display: flex; align-items: center; gap: 14px; padding: 24px 28px; }
+    .trust-item + .trust-item { border-left: 1px solid #e7f1f6; }
+    .trust-icon { display: grid; flex: 0 0 44px; place-items: center; width: 44px; height: 44px; border-radius: 15px; color: #fff; background: var(--blue-500); font-size: 1.15rem; font-weight: 900; }
+    .trust-item:nth-child(2) .trust-icon { background: var(--green); }
+    .trust-item:nth-child(3) .trust-icon { background: var(--purple); }
+    .trust-item strong { display: block; line-height: 1.2; }
+    .trust-item span { color: var(--muted); font-family: system-ui, sans-serif; font-size: .83rem; }
+
+    section { padding: 112px 0; }
+    .intro { display: grid; grid-template-columns: .82fr 1.18fr; gap: 70px; align-items: end; }
+    .intro .lead { margin-bottom: 0; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .feature { position: relative; overflow: hidden; min-height: 260px; padding: 32px; border: 1px solid #dfeef6; border-radius: var(--radius-lg); background: #fff; box-shadow: 0 12px 36px rgba(13,83,143,.08); }
+    .feature::after { content: ""; position: absolute; width: 120px; height: 120px; right: -48px; bottom: -48px; border-radius: 50%; background: rgba(35,168,247,.09); }
+    .feature:nth-child(2)::after { background: rgba(85,185,52,.1); }
+    .feature:nth-child(3)::after { background: rgba(255,101,87,.1); }
+    .feature-number { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 42px; border-radius: 18px; color: var(--blue-700); background: #e9f7ff; font-size: 1.25rem; font-weight: 900; }
+    .feature:nth-child(2) .feature-number { color: var(--green-dark); background: #ecf9e8; }
+    .feature:nth-child(3) .feature-number { color: #d6493e; background: #fff0ed; }
+    .feature h3 { margin-bottom: 10px; font-size: 1.35rem; }
+    .feature p { margin-bottom: 0; color: var(--muted); font-family: system-ui, sans-serif; }
+
+    .gameplay { position: relative; background: var(--sky); }
+    .gameplay::before, .gameplay::after { content: ""; position: absolute; width: 180px; height: 55px; border-radius: 999px; background: rgba(255,255,255,.8); filter: blur(1px); }
+    .gameplay::before { top: 55px; left: -50px; }
+    .gameplay::after { right: -65px; bottom: 60px; }
+    .section-head { max-width: 660px; margin: 0 auto 50px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head .lead { margin-bottom: 0; }
+    .game-showcase { display: grid; grid-template-columns: minmax(320px, .86fr) minmax(420px, 1.14fr); gap: clamp(48px, 8vw, 96px); align-items: center; }
+    .device-stage { position: relative; display: grid; place-items: center; min-height: 690px; }
+    .device-stage::before {
+      content: "";
+      position: absolute;
+      width: min(580px, 108%);
+      aspect-ratio: 1;
+      border: 2px solid rgba(35,168,247,.22);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.95) 0 42%, rgba(255,255,255,.45) 43% 57%, transparent 58%);
+    }
+    .device-stage::after { content: ""; position: absolute; width: 90px; height: 90px; right: 2%; top: 13%; border-radius: 28px; background: var(--yellow); transform: rotate(14deg); box-shadow: 0 18px 36px rgba(216,160,0,.18); }
+    .phone-shell { position: relative; z-index: 2; width: min(390px, 88%); padding: 10px; border: 3px solid #263847; border-radius: 58px; background: #102230; box-shadow: 0 34px 70px rgba(13,83,143,.28); }
+    .phone-shell::before { content: ""; position: absolute; z-index: 3; width: 92px; height: 24px; left: 50%; top: 17px; border-radius: 999px; background: #09141d; transform: translateX(-50%); }
+    .phone-screen { overflow: hidden; border-radius: 46px; background: #75cdf1; }
+    .phone-screen img { width: 100%; aspect-ratio: 700 / 1430; object-fit: cover; transition: opacity .18s ease, transform .3s ease; }
+    .phone-screen img.is-changing { opacity: .22; transform: scale(.985); }
+    .screen-label { position: absolute; z-index: 4; left: 50%; bottom: 28px; min-width: 170px; padding: 11px 18px; border-radius: 999px; color: #fff; background: rgba(8,34,53,.88); box-shadow: 0 8px 22px rgba(0,0,0,.2); font-family: system-ui, sans-serif; font-size: .82rem; font-weight: 800; text-align: center; transform: translateX(-50%); backdrop-filter: blur(8px); }
+    .moments-intro { margin-bottom: 30px; }
+    .moments-intro h3 { margin-bottom: 10px; font-size: clamp(1.75rem, 3vw, 2.45rem); }
+    .moments-intro p { margin-bottom: 0; color: var(--muted); font-family: system-ui, sans-serif; }
+    .moment-list { display: grid; gap: 13px; }
+    .moment {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+      padding: 17px 18px;
+      border: 1px solid #d8e9f2;
+      border-radius: 20px;
+      color: var(--ink);
+      background: rgba(255,255,255,.76);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .moment:hover { border-color: #98d9f8; background: #fff; transform: translateX(5px); }
+    .moment:focus-visible { outline: 4px solid rgba(8,120,232,.25); outline-offset: 2px; }
+    .moment.active { border-color: var(--blue-500); background: #fff; box-shadow: 0 13px 30px rgba(13,83,143,.12); transform: translateX(7px); }
+    .moment-number { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 16px; color: var(--blue-700); background: #e8f7ff; font-size: 1rem; font-weight: 900; }
+    .moment:nth-child(2) .moment-number { color: #7a35bd; background: #f4eaff; }
+    .moment:nth-child(3) .moment-number { color: #338e20; background: #edf9e9; }
+    .moment:nth-child(4) .moment-number { color: #d84069; background: #fff0f5; }
+    .moment:nth-child(5) .moment-number { color: #b76d00; background: #fff5d6; }
+    .moment strong { display: block; margin-bottom: 2px; line-height: 1.2; }
+    .moment small { display: block; color: var(--muted); font-family: system-ui, sans-serif; font-size: .82rem; line-height: 1.4; }
+
+    .parent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .parent-card { position: relative; min-height: 430px; padding: 52px; overflow: hidden; border-radius: 42px; color: #fff; background: linear-gradient(145deg, #6c3fc2, #9c6ce8); box-shadow: 0 24px 55px rgba(82,47,149,.22); }
+    .parent-card::before { content: ""; position: absolute; width: 280px; height: 280px; right: -90px; top: -90px; border: 45px solid rgba(255,255,255,.1); border-radius: 50%; }
+    .parent-card h3 { position: relative; max-width: 390px; margin-top: 72px; margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); }
+    .parent-card p { position: relative; max-width: 430px; margin: 0; color: rgba(255,255,255,.86); font-family: system-ui, sans-serif; }
+    .shield { position: relative; display: grid; place-items: center; width: 76px; height: 76px; border: 2px solid rgba(255,255,255,.4); border-radius: 24px; background: rgba(255,255,255,.15); font-size: 2rem; font-weight: 900; }
+    .check-list { display: grid; gap: 24px; margin: 34px 0 0; padding: 0; list-style: none; }
+    .check-list li { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+    .check { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; color: #fff; background: var(--green); font-weight: 900; }
+    .check-list strong { display: block; margin-bottom: 4px; }
+    .check-list span { color: var(--muted); font-family: system-ui, sans-serif; font-size: .94rem; }
+
+    .cta { padding-top: 0; }
+    .cta-card { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; overflow: hidden; padding: 58px 64px; border-radius: 42px; color: #fff; background: linear-gradient(130deg, #0b78e4, #20b1f6); box-shadow: var(--shadow); }
+    .cta-card::after { content: ""; position: absolute; width: 270px; height: 270px; right: 20%; bottom: -210px; border: 40px solid rgba(255,255,255,.12); border-radius: 50%; }
+    .cta-card h2 { max-width: 650px; margin-bottom: 10px; font-size: clamp(2.2rem, 4vw, 3.6rem); }
+    .cta-card p { margin-bottom: 0; color: rgba(255,255,255,.86); font-family: system-ui, sans-serif; }
+
+    footer { padding: 36px 0; border-top: 1px solid #e4eef3; background: #fff; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--muted); font-family: system-ui, sans-serif; font-size: .87rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+    .footer-links a { color: var(--blue-900); font-weight: 700; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; text-align: center; }
+      .hero-copy > p:not(.eyebrow) { margin-inline: auto; }
+      .hero .eyebrow, .hero-actions { justify-content: center; }
+      .hero-art { width: min(620px, 100%); margin-inline: auto; }
+      .trust-card { grid-template-columns: 1fr; }
+      .trust-item + .trust-item { border-top: 1px solid #e7f1f6; border-left: 0; }
+      .intro, .parent-grid { grid-template-columns: 1fr; gap: 38px; }
+      .features { grid-template-columns: 1fr; }
+      .feature { min-height: auto; }
+      .feature-number { margin-bottom: 26px; }
+      .game-showcase { grid-template-columns: 1fr; gap: 34px; }
+      .device-stage { min-height: 620px; }
+      .showcase-copy { width: min(620px, 100%); margin-inline: auto; }
+      .cta-card { grid-template-columns: 1fr; text-align: center; }
+      .cta-card .play-button { justify-self: center; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 28px, 1160px); }
+      .nav-links a:not(.nav-download) { display: none; }
+      .brand span { display: none; }
+      .hero-grid { padding-bottom: 90px; }
+      .hero h1 { font-size: clamp(3rem, 16vw, 4.25rem); }
+      .hero-art { min-height: 410px; }
+      .app-icon { width: 76%; right: 0; }
+      .phone-shot { width: 165px; left: 0; }
+      .float-tag { right: 0; bottom: 18px; font-size: .76rem; }
+      section { padding: 84px 0; }
+      .device-stage { min-height: 570px; }
+      .phone-shell { width: min(330px, 91%); border-radius: 50px; }
+      .phone-screen { border-radius: 39px; }
+      .device-stage::after { width: 66px; height: 66px; right: 0; }
+      .moment, .moment.active, .moment:hover { transform: none; }
+      .parent-card { min-height: 380px; padding: 36px 30px; }
+      .cta-card { padding: 44px 24px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Fruit Rain Kids home">
+        <img src="assets/app-icon.webp" alt="Fruit Rain Kids smiling fruit basket icon">
+        <span>Fruit Rain Kids</span>
+      </a>
+      <div class="nav-links">
+        <a href="#why">Why parents love it</a>
+        <a href="#gameplay">See the game</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.littlejoygames.fruitrainkids&amp;hl=en_IN" target="_blank" rel="noopener">Download</a>
+      </div>
+    </nav>
+
+    <div class="wrap hero-grid" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Little hands. Big smiles.</p>
+        <h1>Catch. Count.<br><span>Learn &amp; smile.</span></h1>
+        <p>A cheerful fruit-catching game for toddlers and young children. Simple taps, colourful rewards and playful learning—wherever the day takes you.</p>
+        <div class="hero-actions">
+          <a class="play-button" href="https://play.google.com/store/apps/details?id=com.littlejoygames.fruitrainkids&amp;hl=en_IN" target="_blank" rel="noopener" aria-label="Get Fruit Rain Kids on Google Play">
+            <span class="play-mark" aria-hidden="true">▶</span>
+            <span class="play-copy"><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+          <span class="safe-note"><span class="safe-dot" aria-hidden="true"></span>Made for young players</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Fruit Rain Kids app preview">
+        <img class="app-icon" src="assets/app-icon.webp" alt="Happy fruit characters in the Fruit Rain Kids game">
+        <img class="phone-shot" src="assets/gameplay-1.webp" alt="Fruit Rain Kids welcome screen and colourful characters">
+        <div class="float-tag">Play anywhere <b>offline</b></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap trust-strip" aria-label="Game highlights">
+      <div class="trust-card">
+        <div class="trust-item"><span class="trust-icon">1</span><div><strong>Simple to start</strong><span>Easy tap-and-catch play</span></div></div>
+        <div class="trust-item"><span class="trust-icon">2</span><div><strong>Learning through play</strong><span>Fruits, counting and focus</span></div></div>
+        <div class="trust-item"><span class="trust-icon">3</span><div><strong>Works offline</strong><span>Great for travel and quiet time</span></div></div>
+      </div>
+    </div>
+
+    <section id="why">
+      <div class="wrap">
+        <div class="intro">
+          <div>
+            <p class="eyebrow">Play with a purpose</p>
+            <h2>Learning feels better when it feels like play.</h2>
+          </div>
+          <p class="lead">Fruit Rain Kids gives little learners a clear, friendly challenge: catch the colourful fruit as it falls. Along the way, children practise recognising fruits, counting their score and building hand-eye coordination.</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <span class="feature-number">A</span>
+            <h3>Made for little hands</h3>
+            <p>Large targets and straightforward controls help young children jump in with confidence.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">B</span>
+            <h3>Bright, positive feedback</h3>
+            <p>Friendly characters, combos and colourful rewards keep every successful catch exciting.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">C</span>
+            <h3>Three ways to grow</h3>
+            <p>Easy, medium and hard modes let children build skill at a pace that feels right.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gameplay" id="gameplay">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">A peek inside</p>
+          <h2>A tiny world bursting with colour.</h2>
+          <p class="lead">Catch falling fruits, build combos and chase the target score—all with cheerful characters rooting for every little win.</p>
+        </div>
+        <div class="game-showcase">
+          <div class="device-stage" aria-live="polite">
+            <div class="phone-shell">
+              <div class="phone-screen">
+                <img id="game-screen" src="assets/screens/welcome.webp" alt="Fruit Rain Kids colourful welcome screen with difficulty choices">
+              </div>
+              <span class="screen-label" id="screen-label">Choose your challenge</span>
+            </div>
+          </div>
+          <div class="showcase-copy">
+            <div class="moments-intro">
+              <h3>From first tap to fruit-catching champion.</h3>
+              <p>Select a moment to explore how play unfolds inside Fruit Rain Kids.</p>
+            </div>
+            <div class="moment-list" aria-label="Choose a game screen">
+              <button class="moment active" type="button" data-screen="assets/screens/welcome.webp" data-label="Choose your challenge" data-alt="Fruit Rain Kids colourful welcome screen with difficulty choices" aria-pressed="true">
+                <span class="moment-number">01</span><span><strong>Pick a comfortable pace</strong><small>Start with easy, medium or hard difficulty.</small></span>
+              </button>
+              <button class="moment" type="button" data-screen="assets/screens/world-map.webp" data-label="Unlock new worlds" data-alt="Fruit Rain Kids Rainbow Land level map with unlockable missions" aria-pressed="false">
+                <span class="moment-number">02</span><span><strong>Explore colourful worlds</strong><small>Progress through Fruit Garden, Sky Islands, Rainbow Land and more.</small></span>
+              </button>
+              <button class="moment" type="button" data-screen="assets/screens/mission.webp" data-label="Follow simple missions" data-alt="Fruit Rain Kids mission screen asking the player to catch three apples" aria-pressed="false">
+                <span class="moment-number">03</span><span><strong>Follow one clear mission</strong><small>Simple goals help young players know exactly what to catch.</small></span>
+              </button>
+              <button class="moment" type="button" data-screen="assets/screens/combo.webp" data-label="Build a combo" data-alt="Fruit Rain Kids gameplay showing falling fruit and a combo bonus" aria-pressed="false">
+                <span class="moment-number">04</span><span><strong>Catch, combine and score</strong><small>Quick catches create exciting combo point boosts.</small></span>
+              </button>
+              <button class="moment" type="button" data-screen="assets/screens/rewards.webp" data-label="Celebrate every catch" data-alt="Fruit Rain Kids basket filling with fruit and a reward score" aria-pressed="false">
+                <span class="moment-number">05</span><span><strong>Celebrate bigger rewards</strong><small>Friendly fruits, scores and a growing basket make progress visible.</small></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap parent-grid">
+        <div class="parent-card">
+          <div class="shield" aria-hidden="true">✓</div>
+          <h3>Designed with families in mind.</h3>
+          <p>A focused game experience with child-directed settings and age-appropriate advertising controls.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Parent-friendly play</p>
+          <h2>More smiles. Less setup.</h2>
+          <p class="lead">Open the game, choose a difficulty and start catching. The core game works offline, so it is ready for road trips, waiting rooms and everyday playtime.</p>
+          <ul class="check-list">
+            <li><span class="check">✓</span><div><strong>No account required</strong><span>Children can begin without creating a profile or signing in.</span></div></li>
+            <li><span class="check">✓</span><div><strong>Child-directed experience</strong><span>Advertising is configured for child-directed treatment with age-appropriate filtering.</span></div></li>
+            <li><span class="check">✓</span><div><strong>Privacy made clear</strong><span>Read our plain-language privacy policy anytime from this website.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-card">
+          <div>
+            <h2>Ready for a little fruit-filled fun?</h2>
+            <p>Download Fruit Rain Kids on Android and let the catching begin.</p>
+          </div>
+          <a class="play-button" href="https://play.google.com/store/apps/details?id=com.littlejoygames.fruitrainkids&amp;hl=en_IN" target="_blank" rel="noopener" aria-label="Download Fruit Rain Kids from Google Play">
+            <span class="play-mark" aria-hidden="true">▶</span>
+            <span class="play-copy"><small>Download on</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> LittleJoy Games. Made with care for little learners.</span>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:chiradeep.banerjee72@gmail.com">Parent &amp; App Support</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const gameScreen = document.getElementById('game-screen');
+    const screenLabel = document.getElementById('screen-label');
+    const moments = document.querySelectorAll('.moment');
+
+    moments.forEach((moment) => {
+      moment.addEventListener('click', () => {
+        if (moment.classList.contains('active')) return;
+        moments.forEach((item) => {
+          item.classList.remove('active');
+          item.setAttribute('aria-pressed', 'false');
+        });
+        moment.classList.add('active');
+        moment.setAttribute('aria-pressed', 'true');
+        gameScreen.classList.add('is-changing');
+        window.setTimeout(() => {
+          gameScreen.src = moment.dataset.screen;
+          gameScreen.alt = moment.dataset.alt;
+          screenLabel.textContent = moment.dataset.label;
+          gameScreen.classList.remove('is-changing');
+        }, 150);
+      });
+    });
+  </script>
+</body>
+</html>
