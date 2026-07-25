@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0878e8">
-  <meta name="description" content="Fruit Rain Kids is a cheerful fruit-catching game for toddlers and young children. Catch fruits, practise counting and play offline.">
-  <meta property="og:title" content="Fruit Rain Kids — Catch, Count, Learn, Smile">
-  <meta property="og:description" content="A joyful fruit-catching game made for little learners.">
+  <meta name="description" content="Fruit Rain Kids is a colourful play-and-learn adventure with fruit catching, A–Z tracing, daily goals, collectable stickers and 1,000+ levels.">
+  <meta property="og:title" content="Fruit Rain Kids — Catch, Learn, Explore">
+  <meta property="og:description" content="Catch fruit, trace A–Z, unlock powered baskets and explore more than 1,000 playful levels.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chiradeepbanerjee1990.github.io/">
-  <meta property="og:image" content="https://chiradeepbanerjee1990.github.io/assets/og-card.png">
+  <meta property="og:image" content="https://chiradeepbanerjee1990.github.io/assets/og-card-v14.png">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://chiradeepbanerjee1990.github.io/assets/og-card-v14.png">
   <link rel="icon" href="assets/app-icon.webp">
-  <title>Fruit Rain Kids | A joyful learning game for little ones</title>
+  <title>Fruit Rain Kids | Catch, learn and explore</title>
   <style>
     :root {
       --blue-900: #0754a4;
@@ -26,6 +27,8 @@
       --yellow: #ffd44d;
       --coral: #ff6557;
       --purple: #8e52dc;
+      --pink: #f34f91;
+      --orange: #ff9d2e;
       --white: #fff;
       --shadow: 0 18px 50px rgba(13, 83, 143, .14);
       --radius-lg: 32px;
@@ -162,6 +165,28 @@
     .feature h3 { margin-bottom: 10px; font-size: 1.35rem; }
     .feature p { margin-bottom: 0; color: var(--muted); font-family: system-ui, sans-serif; }
 
+    .release { padding-top: 24px; }
+    .release-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(32px, 5vw, 64px);
+      border-radius: 44px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 90% 8%, rgba(255,255,255,.18) 0 80px, transparent 82px),
+        linear-gradient(135deg, #5432a8 0%, #8e52dc 46%, #d955a2 100%);
+      box-shadow: 0 28px 70px rgba(85,50,168,.2);
+    }
+    .release-panel .eyebrow { color: #fff; }
+    .release-panel h2 { max-width: 780px; }
+    .release-panel > p:not(.eyebrow) { max-width: 760px; color: rgba(255,255,255,.86); font-family: system-ui, sans-serif; }
+    .release-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 34px 0 30px; }
+    .release-stat { padding: 22px 20px; border: 1px solid rgba(255,255,255,.24); border-radius: 24px; background: rgba(255,255,255,.11); backdrop-filter: blur(8px); }
+    .release-stat strong { display: block; margin-bottom: 4px; color: var(--yellow); font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1; }
+    .release-stat span { color: rgba(255,255,255,.86); font-family: system-ui, sans-serif; font-size: .84rem; }
+    .release-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .release-tag { padding: 9px 14px; border-radius: 999px; color: #46237f; background: #fff; font-family: system-ui, sans-serif; font-size: .8rem; font-weight: 800; }
+
     .gameplay { position: relative; background: var(--sky); }
     .gameplay::before, .gameplay::after { content: ""; position: absolute; width: 180px; height: 55px; border-radius: 999px; background: rgba(255,255,255,.8); filter: blur(1px); }
     .gameplay::before { top: 55px; left: -50px; }
@@ -252,6 +277,7 @@
       .trust-item + .trust-item { border-top: 1px solid #e7f1f6; border-left: 0; }
       .intro, .parent-grid { grid-template-columns: 1fr; gap: 38px; }
       .features { grid-template-columns: 1fr; }
+      .release-stats { grid-template-columns: repeat(2, 1fr); }
       .feature { min-height: auto; }
       .feature-number { margin-bottom: 26px; }
       .game-showcase { grid-template-columns: 1fr; gap: 34px; }
@@ -278,6 +304,7 @@
       .moment, .moment.active, .moment:hover { transform: none; }
       .parent-card { min-height: 380px; padding: 36px 30px; }
       .cta-card { padding: 44px 24px; }
+      .release-panel { border-radius: 30px; }
       .footer-inner { flex-direction: column; text-align: center; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -294,17 +321,18 @@
         <span>Fruit Rain Kids</span>
       </a>
       <div class="nav-links">
-        <a href="#why">Why parents love it</a>
-        <a href="#gameplay">See the game</a>
+        <a href="#why">Why families love it</a>
+        <a href="#new">What’s new</a>
+        <a href="#gameplay">Explore the app</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.littlejoygames.fruitrainkids&amp;hl=en_IN" target="_blank" rel="noopener">Download</a>
       </div>
     </nav>
 
     <div class="wrap hero-grid" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">Little hands. Big smiles.</p>
-        <h1>Catch. Count.<br><span>Learn &amp; smile.</span></h1>
-        <p>A cheerful fruit-catching game for toddlers and young children. Simple taps, colourful rewards and playful learning—wherever the day takes you.</p>
+        <p class="eyebrow">The play-and-learn adventure</p>
+        <h1>Catch. Learn.<br><span>Grow &amp; explore.</span></h1>
+        <p>Fruit-catching fun now meets A–Z learning, daily orchard goals, collectable stickers and a colourful journey through more than 1,000 levels.</p>
         <div class="hero-actions">
           <a class="play-button" href="https://play.google.com/store/apps/details?id=com.littlejoygames.fruitrainkids&amp;hl=en_IN" target="_blank" rel="noopener" aria-label="Get Fruit Rain Kids on Google Play">
             <span class="play-mark" aria-hidden="true">▶</span>
@@ -315,8 +343,8 @@
       </div>
       <div class="hero-art" aria-label="Fruit Rain Kids app preview">
         <img class="app-icon" src="assets/app-icon.webp" alt="Happy fruit characters in the Fruit Rain Kids game">
-        <img class="phone-shot" src="assets/gameplay-1.webp" alt="Fruit Rain Kids welcome screen and colourful characters">
-        <div class="float-tag">Play anywhere <b>offline</b></div>
+        <img class="phone-shot" src="assets/screens/home-v14.webp" alt="Fruit Rain Kids v14 orchard home with Learning Zone, Daily Orchard, Fruit Passport and Stickers">
+        <div class="float-tag">Now with <b>A–Z learning</b></div>
       </div>
     </div>
   </header>
@@ -324,9 +352,9 @@
   <main>
     <div class="wrap trust-strip" aria-label="Game highlights">
       <div class="trust-card">
-        <div class="trust-item"><span class="trust-icon">1</span><div><strong>Simple to start</strong><span>Easy tap-and-catch play</span></div></div>
-        <div class="trust-item"><span class="trust-icon">2</span><div><strong>Learning through play</strong><span>Fruits, counting and focus</span></div></div>
-        <div class="trust-item"><span class="trust-icon">3</span><div><strong>Works offline</strong><span>Great for travel and quiet time</span></div></div>
+        <div class="trust-item"><span class="trust-icon">1</span><div><strong>Catch and explore</strong><span>1,000+ levels across three modes</span></div></div>
+        <div class="trust-item"><span class="trust-icon">2</span><div><strong>Learn from A to Z</strong><span>Trace, listen and match fruits</span></div></div>
+        <div class="trust-item"><span class="trust-icon">3</span><div><strong>Collect and grow</strong><span>Daily goals, baskets and stickers</span></div></div>
       </div>
     </div>
 
@@ -335,26 +363,51 @@
         <div class="intro">
           <div>
             <p class="eyebrow">Play with a purpose</p>
-            <h2>Learning feels better when it feels like play.</h2>
+            <h2>Every tap opens a new way to grow.</h2>
           </div>
-          <p class="lead">Fruit Rain Kids gives little learners a clear, friendly challenge: catch the colourful fruit as it falls. Along the way, children practise recognising fruits, counting their score and building hand-eye coordination.</p>
+          <p class="lead">Fruit Rain Kids blends quick fruit-catching play with guided early-learning activities. Children can practise letters, recognise fruit, count progress, complete simple missions and build hand-eye coordination at their own pace.</p>
         </div>
         <div class="features">
           <article class="feature">
+            <span class="feature-number">1</span>
+            <h3>Play a grand adventure</h3>
+            <p>Explore five colourful worlds, follow clear missions and grow from gentle early levels to exciting challenges.</p>
+          </article>
+          <article class="feature">
             <span class="feature-number">A</span>
-            <h3>Made for little hands</h3>
-            <p>Large targets and straightforward controls help young children jump in with confidence.</p>
+            <h3>Learn letters through fruit</h3>
+            <p>Trace uppercase and lowercase letters, hear each sound and complete a playful fruit-matching quiz from A to Z.</p>
           </article>
           <article class="feature">
-            <span class="feature-number">B</span>
-            <h3>Bright, positive feedback</h3>
-            <p>Friendly characters, combos and colourful rewards keep every successful catch exciting.</p>
+            <span class="feature-number">★</span>
+            <h3>Make progress feel special</h3>
+            <p>Complete Daily Orchard goals, fill the Fruit Passport, earn stickers and unlock baskets with unique powers.</p>
           </article>
-          <article class="feature">
-            <span class="feature-number">C</span>
-            <h3>Three ways to grow</h3>
-            <p>Easy, medium and hard modes let children build skill at a pace that feels right.</p>
-          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="release" id="new">
+      <div class="wrap">
+        <div class="release-panel">
+          <p class="eyebrow">The biggest Fruit Rain Kids update yet</p>
+          <h2>More play, more learning and a reward around every corner.</h2>
+          <p>Version 14 turns the game into a fuller learning adventure while keeping the simple, cheerful experience children already enjoy.</p>
+          <div class="release-stats" aria-label="Version 14 highlights">
+            <div class="release-stat"><strong>1,000+</strong><span>levels to explore</span></div>
+            <div class="release-stat"><strong>19</strong><span>powered baskets</span></div>
+            <div class="release-stat"><strong>26</strong><span>letters to trace</span></div>
+            <div class="release-stat"><strong>30</strong><span>stickers to collect</span></div>
+          </div>
+          <div class="release-tags" aria-label="Activities and features">
+            <span class="release-tag">A–Z Tracing</span>
+            <span class="release-tag">Fruit Flashcards</span>
+            <span class="release-tag">Name Match</span>
+            <span class="release-tag">Pick the Fruit</span>
+            <span class="release-tag">Daily Orchard</span>
+            <span class="release-tag">Fruit Passport</span>
+            <span class="release-tag">Sticker Album</span>
+          </div>
         </div>
       </div>
     </section>
@@ -362,39 +415,45 @@
     <section class="gameplay" id="gameplay">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">A peek inside</p>
-          <h2>A tiny world bursting with colour.</h2>
-          <p class="lead">Catch falling fruits, build combos and chase the target score—all with cheerful characters rooting for every little win.</p>
+          <p class="eyebrow">Explore version 14</p>
+          <h2>One joyful app. So many ways to play.</h2>
+          <p class="lead">Move from the orchard home to guided learning, daily goals, collectables and a winding level adventure.</p>
         </div>
         <div class="game-showcase">
           <div class="device-stage" aria-live="polite">
             <div class="phone-shell">
               <div class="phone-screen">
-                <img id="game-screen" src="assets/screens/welcome.webp" alt="Fruit Rain Kids colourful welcome screen with difficulty choices">
+                <img id="game-screen" src="assets/screens/home-v14.webp" alt="Fruit Rain Kids v14 orchard home screen">
               </div>
-              <span class="screen-label" id="screen-label">Choose your challenge</span>
+              <span class="screen-label" id="screen-label">Welcome to the orchard</span>
             </div>
           </div>
           <div class="showcase-copy">
             <div class="moments-intro">
-              <h3>From first tap to fruit-catching champion.</h3>
-              <p>Select a moment to explore how play unfolds inside Fruit Rain Kids.</p>
+              <h3>Take a tour of the new adventure.</h3>
+              <p>Select a section to see the latest Fruit Rain Kids experience.</p>
             </div>
             <div class="moment-list" aria-label="Choose a game screen">
-              <button class="moment active" type="button" data-screen="assets/screens/welcome.webp" data-label="Choose your challenge" data-alt="Fruit Rain Kids colourful welcome screen with difficulty choices" aria-pressed="true">
-                <span class="moment-number">01</span><span><strong>Pick a comfortable pace</strong><small>Start with easy, medium or hard difficulty.</small></span>
+              <button class="moment active" type="button" data-screen="assets/screens/home-v14.webp" data-label="Welcome to the orchard" data-alt="Fruit Rain Kids v14 orchard home screen" aria-pressed="true">
+                <span class="moment-number">01</span><span><strong>Choose what to explore</strong><small>Play, learn, visit the orchard or open a collection.</small></span>
               </button>
-              <button class="moment" type="button" data-screen="assets/screens/world-map.webp" data-label="Unlock new worlds" data-alt="Fruit Rain Kids Rainbow Land level map with unlockable missions" aria-pressed="false">
-                <span class="moment-number">02</span><span><strong>Explore colourful worlds</strong><small>Progress through Fruit Garden, Sky Islands, Rainbow Land and more.</small></span>
+              <button class="moment" type="button" data-screen="assets/screens/learning-zone-v14.webp" data-label="Enter the Learning Zone" data-alt="Fruit Rain Kids Learning Zone with seven educational activity cards" aria-pressed="false">
+                <span class="moment-number">02</span><span><strong>Discover seven learning games</strong><small>Letters, words, reading, shapes and numbers in one garden.</small></span>
               </button>
-              <button class="moment" type="button" data-screen="assets/screens/mission.webp" data-label="Follow simple missions" data-alt="Fruit Rain Kids mission screen asking the player to catch three apples" aria-pressed="false">
-                <span class="moment-number">03</span><span><strong>Follow one clear mission</strong><small>Simple goals help young players know exactly what to catch.</small></span>
+              <button class="moment" type="button" data-screen="assets/screens/az-learning-v14.webp" data-label="Trace, then match" data-alt="Fruit Rain Kids A–Z tracing lesson and fruit matching quiz" aria-pressed="false">
+                <span class="moment-number">03</span><span><strong>Learn every letter from A to Z</strong><small>Trace with a finger, then choose the fruit that starts with it.</small></span>
               </button>
-              <button class="moment" type="button" data-screen="assets/screens/combo.webp" data-label="Build a combo" data-alt="Fruit Rain Kids gameplay showing falling fruit and a combo bonus" aria-pressed="false">
-                <span class="moment-number">04</span><span><strong>Catch, combine and score</strong><small>Quick catches create exciting combo point boosts.</small></span>
+              <button class="moment" type="button" data-screen="assets/screens/daily-orchard-v14.webp" data-label="Grow the Daily Orchard" data-alt="Fruit Rain Kids Daily Orchard progress and goal cards" aria-pressed="false">
+                <span class="moment-number">04</span><span><strong>Complete three daily goals</strong><small>Watch the orchard grow and celebrate a new reward.</small></span>
               </button>
-              <button class="moment" type="button" data-screen="assets/screens/rewards.webp" data-label="Celebrate every catch" data-alt="Fruit Rain Kids basket filling with fruit and a reward score" aria-pressed="false">
-                <span class="moment-number">05</span><span><strong>Celebrate bigger rewards</strong><small>Friendly fruits, scores and a growing basket make progress visible.</small></span>
+              <button class="moment" type="button" data-screen="assets/screens/stickers-v14.webp" data-label="Build a sticker album" data-alt="Fruit Rain Kids Sticker Album with collected and locked achievement cards" aria-pressed="false">
+                <span class="moment-number">05</span><span><strong>Collect 30 achievement stickers</strong><small>See progress clearly and tap each sticker for its story.</small></span>
+              </button>
+              <button class="moment" type="button" data-screen="assets/screens/level-map-v14.webp" data-label="Journey beyond level 1,000" data-alt="Fruit Rain Kids redesigned adventure level map and Basket Gear carousel" aria-pressed="false">
+                <span class="moment-number">06</span><span><strong>Explore worlds and basket powers</strong><small>Follow the winding route and unlock 19 unique baskets.</small></span>
+              </button>
+              <button class="moment" type="button" data-screen="assets/screens/fruit-passport-v14.webp" data-label="Fill the Fruit Passport" data-alt="Fruit Rain Kids Fruit Passport collection screen" aria-pressed="false">
+                <span class="moment-number">07</span><span><strong>Meet 71 fruit friends</strong><small>Discover each fruit and grow a colourful collection.</small></span>
               </button>
             </div>
           </div>
@@ -411,8 +470,8 @@
         </div>
         <div>
           <p class="eyebrow">Parent-friendly play</p>
-          <h2>More smiles. Less setup.</h2>
-          <p class="lead">Open the game, choose a difficulty and start catching. The core game works offline, so it is ready for road trips, waiting rooms and everyday playtime.</p>
+          <h2>More discovery. Less setup.</h2>
+          <p class="lead">Open the game and let children choose between catching, learning and collecting. The core experience works offline, making it ready for road trips, waiting rooms and everyday playtime.</p>
           <ul class="check-list">
             <li><span class="check">✓</span><div><strong>No account required</strong><span>Children can begin without creating a profile or signing in.</span></div></li>
             <li><span class="check">✓</span><div><strong>Child-directed experience</strong><span>Advertising is configured for child-directed treatment with age-appropriate filtering.</span></div></li>
@@ -426,8 +485,8 @@
       <div class="wrap">
         <div class="cta-card">
           <div>
-            <h2>Ready for a little fruit-filled fun?</h2>
-            <p>Download Fruit Rain Kids on Android and let the catching begin.</p>
+            <h2>Ready to catch, learn and explore?</h2>
+            <p>Download Fruit Rain Kids on Android and begin a colourful learning adventure.</p>
           </div>
           <a class="play-button" href="https://play.google.com/store/apps/details?id=com.littlejoygames.fruitrainkids&amp;hl=en_IN" target="_blank" rel="noopener" aria-label="Download Fruit Rain Kids from Google Play">
             <span class="play-mark" aria-hidden="true">▶</span>
