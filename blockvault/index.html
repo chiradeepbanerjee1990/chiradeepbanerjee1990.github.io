@@ -4,16 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#05060d">
-  <meta name="description" content="Block Vault is a neon block puzzle with 2,400 levels, no timer and no pressure. Drag blocks, clear lines, chain combos up to x4. Free on Android.">
-  <meta property="og:title" content="Block Vault — Neon Block Puzzle">
-  <meta property="og:description" content="2,400 levels of block puzzle. No timer, no pressure. Drag blocks, clear rows and columns, chain combos up to x4.">
+  <meta name="description" content="Block Vault is a free neon block puzzle for Android with 2,400 levels, chain reactions, Vault Rush, Daily Drops and unlockable Vault Collections.">
+  <meta property="og:title" content="Block Puzzle: Block Vault">
+  <meta property="og:description" content="Clear lines, trigger chain reactions and unlock four Vault Collections across 2,400 increasingly challenging puzzle levels.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chiradeepbanerjee1990.github.io/blockvault/">
   <meta property="og:image" content="https://chiradeepbanerjee1990.github.io/blockvault/assets/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://chiradeepbanerjee1990.github.io/blockvault/assets/og-card.png">
+  <link rel="canonical" href="https://chiradeepbanerjee1990.github.io/blockvault/">
   <link rel="icon" href="assets/icon-192.png">
-  <title>Block Vault | Neon Block Puzzle for Android</title>
+  <title>Block Puzzle: Block Vault | Free Android Game</title>
   <style>
     :root {
       --void: #05060d;
@@ -169,28 +170,132 @@
     }
     .dot i { border-radius: 3px; }
 
-    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: step; }
-    .step { padding-left: 54px; position: relative; }
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute; left: 0; top: 2px;
-      width: 38px; height: 38px;
-      display: grid; place-items: center;
-      border-radius: 12px;
-      background: var(--panel-hi);
-      border: 1px solid var(--line);
-      color: var(--cyan);
-      font-weight: 900;
-    }
-    .step h3 { margin: 6px 0 6px; font-size: 1rem; font-weight: 800; }
-    .step p { margin: 0; color: var(--dim); font-size: .92rem; }
-
     .band {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       background: linear-gradient(180deg, var(--deep), var(--void));
     }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--cyan);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .new-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .feature-panel {
+      position: relative;
+      min-height: 360px;
+      padding: 34px;
+      border: 1px solid rgba(0, 229, 255, .28);
+      border-radius: 28px;
+      background:
+        radial-gradient(560px 280px at 100% 100%, rgba(124, 77, 255, .24), transparent 65%),
+        linear-gradient(145deg, rgba(10, 53, 71, .88), rgba(20, 26, 49, .9));
+      overflow: hidden;
+    }
+    .feature-panel::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 280px;
+      height: 280px;
+      border: 38px solid rgba(0, 229, 255, .07);
+      border-radius: 40px;
+      transform: rotate(18deg);
+    }
+    .feature-panel > * { position: relative; z-index: 1; }
+    .feature-panel h3 { margin: 0 0 12px; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.12; }
+    .feature-panel p { max-width: 45ch; margin: 0; color: var(--dim); }
+    .reward-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .reward-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 6, 13, .52);
+      color: var(--text);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+    .reward-chip i { width: 10px; height: 10px; border-radius: 3px; box-shadow: 0 0 12px currentColor; }
+    .stack { display: grid; gap: 18px; }
+    .mini-feature {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(30, 38, 71, .78), rgba(20, 26, 49, .82));
+    }
+    .mini-feature b { display: block; margin-bottom: 7px; color: var(--amber); font-size: 1.05rem; }
+    .mini-feature p { margin: 0; color: var(--dim); font-size: .92rem; }
+
+    .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .mode {
+      position: relative;
+      padding: 24px 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+    .mode::before { content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 3px; background: var(--accent); }
+    .mode small { color: var(--accent); font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .mode h3 { margin: 14px 0 7px; font-size: 1.08rem; }
+    .mode p { margin: 0; color: var(--dim); font-size: .9rem; }
+
+    .learn-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: start; }
+    .lesson { display: grid; gap: 14px; counter-reset: lesson; }
+    .lesson-step {
+      position: relative;
+      padding: 20px 20px 20px 68px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(20, 26, 49, .72);
+    }
+    .lesson-step::before {
+      counter-increment: lesson;
+      content: counter(lesson);
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: var(--void);
+      font-weight: 900;
+    }
+    .lesson-step h3 { margin: 0 0 4px; font-size: 1rem; }
+    .lesson-step p { margin: 0; color: var(--dim); font-size: .9rem; }
+
+    .final-cta {
+      margin-top: 10px;
+      padding: 52px 36px;
+      border: 1px solid rgba(255, 45, 149, .28);
+      border-radius: 28px;
+      background:
+        radial-gradient(520px 250px at 5% 50%, rgba(0, 229, 255, .16), transparent 65%),
+        radial-gradient(520px 250px at 95% 50%, rgba(255, 45, 149, .16), transparent 65%),
+        var(--panel);
+      text-align: center;
+    }
+    .final-cta h2 { margin-bottom: 12px; }
+    .final-cta p { max-width: 54ch; margin: 0 auto 25px; color: var(--dim); }
+    .final-cta .btn { justify-content: center; }
+
+    a:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
 
     footer { padding: 48px 0 60px; color: var(--faint); font-size: .86rem; }
     .foot-row { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
@@ -199,8 +304,21 @@
 
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-      .cards, .how { grid-template-columns: 1fr; }
+      .cards, .new-grid, .learn-grid { grid-template-columns: 1fr; }
+      .modes { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .hero { padding-top: 58px; }
+      .wrap { width: min(100% - 28px, 1080px); }
+      .stats, .modes { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat { padding: 16px 10px; }
+      .stat b { font-size: 1.3rem; }
+      .feature-panel, .final-cta { padding: 26px 22px; }
+      .btn { width: 100%; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
@@ -209,16 +327,16 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Android · Free · Offline</span>
-        <h1>2,400 levels of <span class="grad">neon block puzzle</span></h1>
-        <p class="lede">Drag blocks onto the grid. Fill a row or column and it blasts apart.
-        Simple to start, and it keeps getting harder for twenty-four districts. No timer,
-        no pressure, no rush.</p>
+        <span class="eyebrow">Version 2.13 · Android · Free</span>
+        <h1>Clear the grid. <span class="grad">Crack the vault.</span></h1>
+        <p class="lede">Place blocks, blast lines and set off chain reactions across 2,400
+        puzzle levels. Play the campaign at your own pace, then unlock new block styles
+        through Vault Collections.</p>
         <div class="cta-row">
-          <a class="btn" href="#" id="play-link">Get it on Google Play</a>
-          <a class="btn ghost" href="#how">How it plays</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.littlejoygames.blockvault" id="play-link" rel="noopener">Get it on Google Play</a>
+          <a class="btn ghost" href="#new">See what’s new</a>
         </div>
-        <p class="note">Coming to Google Play. Free to play, contains ads.</p>
+        <p class="note">Available now · Free to play · Offline campaign · Contains ads</p>
       </div>
       <div class="shot">
         <img src="assets/feature.png" alt="Block Vault gameplay — a neon 8x8 grid part-filled with coloured blocks" width="1024" height="500">
@@ -230,78 +348,153 @@
     <div class="stats">
       <div class="stat"><b class="c1">2,400</b><span>Levels</span></div>
       <div class="stat"><b class="c2">24</b><span>Districts</span></div>
-      <div class="stat"><b class="c3">x4</b><span>Max combo</span></div>
-      <div class="stat"><b class="c4">0</b><span>Timers</span></div>
+      <div class="stat"><b class="c3">4</b><span>Collections</span></div>
+      <div class="stat"><b class="c4">Offline</b><span>Campaign</span></div>
     </div>
   </div>
 
-  <section>
+  <section id="new">
     <div class="wrap">
-      <h2>Built for people who actually like puzzles</h2>
-      <p class="sub">Most block games run out of ideas by level fifty. This one has four goal
-      types, obstacles that change how you plan, and a difficulty curve that was tuned by
-      simulation rather than guesswork.</p>
+      <p class="section-kicker">New in version 2.13</p>
+      <h2>A new reason to open the Vault</h2>
+      <p class="sub">Learn by playing, collect something every day, and turn your progress into
+      block styles that make the board feel like yours.</p>
 
-      <div class="cards">
-        <div class="card">
-          <div class="dot"><i style="background:#00e5ff"></i><i style="background:#ff2d95"></i><i style="background:#ffc400"></i><i style="background:#00ff9d"></i></div>
-          <h3>Four ways to win</h3>
-          <p>Hit a score, clear a set number of lines, shatter frozen blocks, or dig out every
-          energy core. Each one demands a different way of reading the board.</p>
-        </div>
-        <div class="card">
-          <div class="dot"><i style="background:#ffc400"></i><i style="background:#ffc400"></i><i style="background:#ff2d95"></i><i style="background:#ffc400"></i></div>
-          <h3>Combos that matter</h3>
-          <p>Clear two lines in one move, or clear on back-to-back moves, and the multiplier
-          climbs to x4. Chaining is where the big scores live.</p>
-        </div>
-        <div class="card">
-          <div class="dot"><i style="background:#7c4dff"></i><i style="background:#00e5ff"></i><i style="background:#7c4dff"></i><i style="background:#00e5ff"></i></div>
-          <h3>Boss levels</h3>
-          <p>Every tenth level is a Vault Run. Every twenty-fifth is an Overload — tighter move
-          budget, higher target, and it will make you think.</p>
-        </div>
-        <div class="card">
-          <div class="dot"><i style="background:#00ff9d"></i><i style="background:#00e5ff"></i><i style="background:#00ff9d"></i><i style="background:#00e5ff"></i></div>
-          <h3>Never a dead tray</h3>
-          <p>The game will not hand you three pieces that cannot be placed. When you lose, it is
-          because of a decision you made, not a bad draw.</p>
-        </div>
-        <div class="card">
-          <div class="dot"><i style="background:#ff2d95"></i><i style="background:#ffc400"></i><i style="background:#ff2d95"></i><i style="background:#ffc400"></i></div>
-          <h3>Boosters, not paywalls</h3>
-          <p>Hint reveals the strongest placement. Smasher destroys one block. Shuffle rerolls
-          your tray. Earned with coins from playing.</p>
-        </div>
-        <div class="card">
-          <div class="dot"><i style="background:#00e5ff"></i><i style="background:#7c4dff"></i><i style="background:#ff2d95"></i><i style="background:#00ff9d"></i></div>
-          <h3>Phone and tablet</h3>
-          <p>One layout that adapts to the screen it is on. The board is always a centred square,
-          never a stretched mess on a 12-inch tablet.</p>
+      <div class="new-grid">
+        <article class="feature-panel">
+          <p class="section-kicker">Vault Collections</p>
+          <h3>Four collections.<br>A style worth earning.</h3>
+          <p>Win on different days to unlock Glass, Circuit, Prism and Monolith blocks. Every
+          play day pays a booster or coins, and missing a day never erases your progress.</p>
+          <div class="reward-row" aria-label="Vault Collection styles">
+            <span class="reward-chip"><i style="background:#b6fff3;color:#00e5ff"></i>Glass</span>
+            <span class="reward-chip"><i style="background:#00ff9d;color:#00ff9d"></i>Circuit</span>
+            <span class="reward-chip"><i style="background:#ff2d95;color:#ff2d95"></i>Prism</span>
+            <span class="reward-chip"><i style="background:#77819b;color:#77819b"></i>Monolith</span>
+          </div>
+        </article>
+        <div class="stack">
+          <article class="mini-feature">
+            <b>Hands-on from move one</b>
+            <p>A three-step playable intro teaches your first line clear, double clear and chain
+            reaction before level one begins.</p>
+          </article>
+          <article class="mini-feature">
+            <b>Daily Drops that grow with you</b>
+            <p>Keep your streak alive to advance through longer, richer reward cycles. Miss a
+            day and the cycle restarts—your Vault Collection progress stays safe.</p>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="how" class="band">
+  <section class="band">
     <div class="wrap">
-      <h2>How it plays</h2>
-      <p class="sub">Thirty seconds to learn. The app also ships with an illustrated tutorial and
-      on-board coaching for the first three levels.</p>
-      <div class="how">
-        <div class="step">
-          <h3>Drag a piece</h3>
-          <p>Three pieces sit in the tray. Press one, drag it onto the grid, let go. Pieces never
-          rotate, so pick the one that fits.</p>
-        </div>
-        <div class="step">
-          <h3>Fill a line</h3>
-          <p>Complete a whole row or column and it clears, freeing up space for the next piece.</p>
-        </div>
-        <div class="step">
-          <h3>Beat the goal</h3>
-          <p>Every level has a target and a move budget. Run out of either and the run is over.</p>
-        </div>
+      <p class="section-kicker">Choose your pace</p>
+      <h2>Relaxed campaign or ticking clock</h2>
+      <p class="sub">The 2,400-level campaign has no timer. When you want pressure, Vault Rush
+      is waiting—with other ways to play every day.</p>
+      <div class="modes">
+        <article class="mode" style="--accent:#00e5ff">
+          <small>2,400 levels</small>
+          <h3>Campaign</h3>
+          <p>Explore 24 districts, four goal types, Vault Runs and Overload bosses at your own pace.</p>
+        </article>
+        <article class="mode" style="--accent:#ff2d95">
+          <small>Beat the clock</small>
+          <h3>Vault Rush</h3>
+          <p>Clear waves, earn time, grow your coin pot and decide when to bank it.</p>
+        </article>
+        <article class="mode" style="--accent:#ffc400">
+          <small>Same worldwide</small>
+          <h3>Daily Challenge</h3>
+          <p>Take on one shared board each day and keep your win streak alive.</p>
+        </article>
+        <article class="mode" style="--accent:#00ff9d">
+          <small>Chase your best</small>
+          <h3>Endless</h3>
+          <p>No goal and no move limit—keep the grid alive for as long as you can.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-kicker">More than a line clear</p>
+      <h2>Built for people who actually like puzzles</h2>
+      <p class="sub">Every mode rewards planning. Different objectives, layered obstacles and
+      explosive chain reactions keep the same simple rules feeling fresh.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="dot"><i style="background:#00e5ff"></i><i style="background:#ff2d95"></i><i style="background:#ffc400"></i><i style="background:#00ff9d"></i></div>
+          <h3>Four ways to win</h3>
+          <p>Hit a score, clear lines, shatter frozen blocks or dig out every energy core.</p>
+        </article>
+        <article class="card">
+          <div class="dot"><i style="background:#ff2d95"></i><i style="background:#ff2d95"></i><i style="background:#ff6f00"></i><i style="background:#ffc400"></i></div>
+          <h3>Chain reactions</h3>
+          <p>Trigger a primed block and its blast can set off the next one, clearing the board in a cascade.</p>
+        </article>
+        <article class="card">
+          <div class="dot"><i style="background:#7c4dff"></i><i style="background:#00e5ff"></i><i style="background:#7c4dff"></i><i style="background:#00e5ff"></i></div>
+          <h3>Combos with a payoff</h3>
+          <p>Clear multiple lines or clear on consecutive moves. Vault Runs push the multiplier beyond the usual x4.</p>
+        </article>
+        <article class="card">
+          <div class="dot"><i style="background:#00ff9d"></i><i style="background:#00e5ff"></i><i style="background:#00ff9d"></i><i style="background:#00e5ff"></i></div>
+          <h3>Fair piece trays</h3>
+          <p>The game avoids dealing three impossible pieces. When a run ends, it comes down to the choices you made.</p>
+        </article>
+        <article class="card">
+          <div class="dot"><i style="background:#ff2d95"></i><i style="background:#ffc400"></i><i style="background:#ff2d95"></i><i style="background:#ffc400"></i></div>
+          <h3>Helpful boosters</h3>
+          <p>Use Hint, Smasher, Shuffle and Undo when you need a second look or another chance.</p>
+        </article>
+        <article class="card">
+          <div class="dot"><i style="background:#00e5ff"></i><i style="background:#7c4dff"></i><i style="background:#ff2d95"></i><i style="background:#00ff9d"></i></div>
+          <h3>Play offline</h3>
+          <p>The full campaign works without Wi-Fi, an account or a login. Your progress stays on your device.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap learn-grid">
+      <div>
+        <p class="section-kicker">Learn by doing</p>
+        <h2>Your first breakthroughs happen before level one</h2>
+        <p class="sub">The new playable introduction uses the real game board and includes a
+        one-tap placement option whenever you want a nudge.</p>
+      </div>
+      <div class="lesson">
+        <article class="lesson-step">
+          <h3>Make your first clear</h3>
+          <p>Place a block to complete a line and open space on the grid.</p>
+        </article>
+        <article class="lesson-step">
+          <h3>Clear two lines at once</h3>
+          <p>Read the whole board and discover why one placement can be worth two.</p>
+        </article>
+        <article class="lesson-step">
+          <h3>Set off a chain reaction</h3>
+          <p>Crack a primed block and watch its blast travel through the board.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <p class="section-kicker">The Vault is open</p>
+        <h2>Start clearing. Keep collecting.</h2>
+        <p>Play free on Android, take the campaign offline and make every return count with
+        Daily Drops and Vault Collections.</p>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.littlejoygames.blockvault" rel="noopener">Play Block Vault on Google Play</a>
       </div>
     </div>
   </section>
